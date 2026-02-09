@@ -105,6 +105,7 @@
         },
         "patches": {
             "drupal/core": {
+                "#3398033: Remove mentions of assert.active": "patches/drupal/core/244d64aa22f70314cf8dbfd9471a4266114bf4ed.patch",
                 "#3564735: Synthetic service (kernel) error during non-interactive install from existing config in Drupal 11.3": "https://git.drupalcode.org/project/drupal/-/merge_requests/14169.patch"
             },
             "drupal/canvas": {

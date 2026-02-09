@@ -1,0 +1,19 @@
+diff --git a/core/assets/scaffold/files/htaccess b/core/assets/scaffold/files/htaccess
+index 1ac01a117b276ec0db962c82d05ffca835d57832..b46f1784f77fb37a7cb2ef72876e2383f27717b2 100644
+--- a/core/assets/scaffold/files/htaccess
++++ b/core/assets/scaffold/files/htaccess
+@@ -25,14 +25,6 @@ AddEncoding gzip svgz
+ # Add correct encoding for webp.
+ AddType image/webp .webp
+ 
+-# Most of the following PHP settings cannot be changed at runtime. See
+-# sites/default/default.settings.php and
+-# Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
+-# changed at runtime.
+-<IfModule mod_php.c>
+-  php_value assert.active                   0
+-</IfModule>
+-
+ # Requires mod_expires to be enabled.
+ <IfModule mod_expires.c>
+   # Enable expirations.

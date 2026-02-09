@@ -1,7 +1,17 @@
 {
-    "_hash": "d79639641d4d0fed6a424950536f5b0c3d65a4d1852b28c9f684501f3a17b796",
+    "_hash": "57c696abd7d260a5be98b9fbc1305c229b7763f17e679fe7240fc710cb933ba9",
     "patches": {
         "drupal/core": [
+            {
+                "package": "drupal/core",
+                "description": "#3398033: Remove mentions of assert.active",
+                "url": "patches/drupal/core/244d64aa22f70314cf8dbfd9471a4266114bf4ed.patch",
+                "sha256": "72e1a195651660212d83ec9c7e72ef14c17fcf05147576fd664e9b65cb59bbb3",
+                "depth": 2,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
             {
                 "package": "drupal/core",
                 "description": "#3564735: Synthetic service (kernel) error during non-interactive install from existing config in Drupal 11.3",
@@ -18,7 +28,7 @@
                 "package": "drupal/canvas",
                 "description": "#3568950: Let the agent know that the tools were succesful",
                 "url": "https://git.drupalcode.org/project/canvas/-/merge_requests/493.patch",
-                "sha256": "e0fd9587ebcd9dc70843374473a1026c2c8cccece310de558959b3132822ca9d",
+                "sha256": "afc4ba674f330bb5e10b65ef9f884505c86ad3a7e163391010dd2300bd047461",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"
