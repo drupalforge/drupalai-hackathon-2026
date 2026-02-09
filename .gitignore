@@ -77,7 +77,6 @@ bower_components
 
 # Ignore local service overrides.
 /web/sites/local.services.yml
-drush/drush.yml
 .editorconfig
 .gitattributes
 .pnpm-store
