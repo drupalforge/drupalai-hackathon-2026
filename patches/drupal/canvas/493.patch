@@ -1,0 +1,80 @@
+diff --git a/modules/canvas_ai/src/Plugin/AiFunctionCall/AddMetadata.php b/modules/canvas_ai/src/Plugin/AiFunctionCall/AddMetadata.php
+index 0a01d1e1..a598bd14 100644
+--- a/modules/canvas_ai/src/Plugin/AiFunctionCall/AddMetadata.php
++++ b/modules/canvas_ai/src/Plugin/AiFunctionCall/AddMetadata.php
+@@ -37,6 +37,7 @@ class AddMetadata extends FunctionCallBase implements ExecutableFunctionCallInte
+     $this->setStructuredOutput([
+       'metadata' => ['metatag_description' => $this->getContextValue('metadata')],
+     ]);
++    $this->setOutput('Metadata added successfully.');
+   }
+ 
+ }
+diff --git a/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateComponent.php b/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateComponent.php
+index 1b95d8eb..7c3f920c 100644
+--- a/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateComponent.php
++++ b/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateComponent.php
+@@ -167,6 +167,7 @@ final class CreateComponent extends FunctionCallBase implements ExecutableFuncti
+       return;
+     }
+     $this->setStructuredOutput(['component_structure' => $output]);
++    $this->setOutput('The component ' . $component_name . ' has been created successfully.');
+   }
+ 
+ }
+diff --git a/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateFieldContent.php b/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateFieldContent.php
+index 31e76dd5..b7375b6e 100644
+--- a/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateFieldContent.php
++++ b/modules/canvas_ai/src/Plugin/AiFunctionCall/CreateFieldContent.php
+@@ -43,6 +43,7 @@ final class CreateFieldContent extends FunctionCallBase implements ExecutableFun
+     $this->setStructuredOutput([
+       'created_content' => $this->getContextValue('field_content'),
+     ]);
++    $this->setOutput('Successfully created content for the field.');
+   }
+ 
+ }
+diff --git a/modules/canvas_ai/src/Plugin/AiFunctionCall/EditComponentJs.php b/modules/canvas_ai/src/Plugin/AiFunctionCall/EditComponentJs.php
+index d8093237..a7809cf8 100644
+--- a/modules/canvas_ai/src/Plugin/AiFunctionCall/EditComponentJs.php
++++ b/modules/canvas_ai/src/Plugin/AiFunctionCall/EditComponentJs.php
+@@ -175,11 +175,13 @@ final class EditComponentJs extends FunctionCallBase implements ExecutableFuncti
+       $this->setOutput(Yaml::dump(['error' => sprintf('Failed to process Javascript component data: %s', $e->getMessage())], 10, 2));
+       return;
+     }
+-    $this->setStructuredOutput([
++    $output = [
+       'js_structure' => $js,
+       'props_metadata' => Json::encode($transformed_props),
+       'required_props' => $required_props,
+-    ]);
++    ];
++    $this->setStructuredOutput($output);
++    $this->setOutput('Component with id "' . $machine_name . '" has been successfully updated.');
+   }
+ 
+ }
+diff --git a/modules/canvas_ai/src/Plugin/AiFunctionCall/EditFieldContent.php b/modules/canvas_ai/src/Plugin/AiFunctionCall/EditFieldContent.php
+index da59679b..1f8fe350 100644
+--- a/modules/canvas_ai/src/Plugin/AiFunctionCall/EditFieldContent.php
++++ b/modules/canvas_ai/src/Plugin/AiFunctionCall/EditFieldContent.php
+@@ -43,6 +43,7 @@ class EditFieldContent extends FunctionCallBase implements ExecutableFunctionCal
+     $this->setStructuredOutput([
+       'refined_text' => $this->getContextValue('text_value'),
+     ]);
++    $this->setOutput('Refined the text');
+   }
+ 
+ }
+diff --git a/modules/canvas_ai/src/Plugin/AiFunctionCall/SetAIGeneratedComponentStructure.php b/modules/canvas_ai/src/Plugin/AiFunctionCall/SetAIGeneratedComponentStructure.php
+index e8d7ad3f..ca32464a 100644
+--- a/modules/canvas_ai/src/Plugin/AiFunctionCall/SetAIGeneratedComponentStructure.php
++++ b/modules/canvas_ai/src/Plugin/AiFunctionCall/SetAIGeneratedComponentStructure.php
+@@ -112,6 +112,7 @@ final class SetAIGeneratedComponentStructure extends FunctionCallBase implements
+       $custom_yaml = $this->pageBuilderHelper->customYamlToArrayMapper($component_structure);
+       \assert(array_keys($custom_yaml) === ['operations']);
+       $this->setStructuredOutput($custom_yaml);
++      $this->setOutput('Component structure processed successfully.');
+     }
+     catch (\Exception $e) {
+       $this->loggerFactory->get('canvas_ai')->error($e->getMessage());
