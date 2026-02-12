@@ -8,4 +8,5 @@ $databases['default']['default']['port'] = getenv('DB_PORT');
 $databases['default']['default']['driver'] = getenv('DB_DRIVER');
 $databases['default']['default']['isolation_level'] = 'READ COMMITTED';
 $settings['hash_salt'] = file_get_contents(__DIR__ . '/salt.txt');
+$settings['file_private_path'] = '../private';
 $settings['trusted_host_patterns'] = [getenv('DP_HOSTNAME') ?: '.*'];
